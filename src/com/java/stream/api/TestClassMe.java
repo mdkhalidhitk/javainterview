@@ -24,12 +24,12 @@ public class TestClassMe implements TestInterFace, TestInterface2 {
 
 	public static List<Book> getBookList() {
 		List<Book> bookList = new ArrayList<>();
-		bookList.add(new Book(500, "Core Java", 200, "Kathy Sierra", 1065.5));
-		bookList.add(new Book(501, "JSP & Servlets", 350, "Kathy Sierra", 1749.0));
-		bookList.add(new Book(502, "Spring in Action", 480, "Craig Walls", 940.75));
-		bookList.add(new Book(503, "Pro Angular", 260, "Freeman", 1949.25));
-		bookList.add(new Book(504, "HTML CSS", 100, "Thomas Powell", 2317.09));
-		bookList.add(new Book(505, "Hibernate in Action", 180, "Gavin King", 889.25));
+		bookList.add(new Book(500, "Core Java", 210, "khalid Hassan", 1065.5));
+		bookList.add(new Book(501, "JSP & Servlets", 45, "Sameeha khalid", 1749.0));
+		bookList.add(new Book(502, "Spring in Action", 480, "Md Ebaadur Rahamn", 940.75));
+		bookList.add(new Book(503, "Pro Angular", 260, "Sadia Alam", 1949.25));
+		bookList.add(new Book(504, "HTML CSS", 100, "Md Mustaque Alam", 2317.09));
+		bookList.add(new Book(505, "Hibernate in Action", 180, "Hemchand Matho", 889.25));
 
 		return bookList;
 	}
@@ -55,10 +55,8 @@ public class TestClassMe implements TestInterFace, TestInterface2 {
 		bookList.forEach(System.out::println);
 		List<Manager> manger = Arrays.asList(new Manager("google", new DepartMent("IT", "IT01")),
 				new Manager("google", new DepartMent("IT", "IT02")), new Manager("Apple", new DepartMent("CS", "CS01")),
-				new Manager("Apple", new DepartMent("CS", "CS02")),
-				new Manager("SONY", new DepartMent("CS", "CS03")),
-				new Manager("SONY", new DepartMent("CS", "CS04")),
-				new Manager("Ipad", new DepartMent("CS", "CS05")),
+				new Manager("Apple", new DepartMent("CS", "CS02")), new Manager("SONY", new DepartMent("CS", "CS03")),
+				new Manager("SONY", new DepartMent("CS", "CS04")), new Manager("Ipad", new DepartMent("CS", "CS05")),
 				new Manager("Xomi", new DepartMent("CS", "CS06")));
 		List<DepartMent> dep = manger.stream().filter(man -> man.getDepartment().getDepName().startsWith("IT"))
 				.map(man -> man.getDepartment()).collect(Collectors.toList());
@@ -75,8 +73,7 @@ public class TestClassMe implements TestInterFace, TestInterface2 {
 		Map<String, List<Manager>> employeesMap = manger.stream().collect(Collectors.groupingBy(Manager::getName));
 		// employeesMap.forEach((key, value) -> System.out.println("MangerKey : " + key
 		// + " ManagerList :" + value));
-		Map<String, List<Manager>> mapByName = manger.stream()
-				.collect(Collectors.groupingBy(Manager::getName));
+		Map<String, List<Manager>> mapByName = manger.stream().collect(Collectors.groupingBy(Manager::getName));
 		// mapByName.forEach((key, value) -> System.out.println("mapByName : " + key + "
 		// mapByNameManagerList :" + value));
 		List<Manager> shortedList = new ArrayList<Manager>();
@@ -84,13 +81,9 @@ public class TestClassMe implements TestInterFace, TestInterface2 {
 
 			shortedList.addAll(value);
 		});
-		 PageUtil.returnPage(shortedList, 1);
-		
-		
-		//shortedList.forEach(System.out::println);
-		
-		
-		
+		PageUtil.returnPage(shortedList, 1);
+
+		// shortedList.forEach(System.out::println);
 
 		Map<DepartMent, Manager> mangerByDepart = manger.stream()
 				.collect(Collectors.toMap(Manager::getDepartment, man -> man));
